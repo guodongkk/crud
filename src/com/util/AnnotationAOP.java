@@ -40,8 +40,9 @@ public class AnnotationAOP {
 
     @AfterThrowing("execution(* com.service.*.*(..))" )
     public void throwing(){
-
         System.out.println("异常通知");
+        transactionUtil.rollback(begin);
+        System.out.println("事务回滚");
     }
 
     //    proceedingJoinPoint切入点
